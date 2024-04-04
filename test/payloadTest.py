@@ -2,12 +2,12 @@ import requests
 import json
 
 # Define the URL of your webhook endpoint
-webhook_url = 'https://webhook-api-d7a115650405.herokuapp.com/webhook/receiver'  # Update with your actual webhook URL
+webhook_url = ' https://webhook-api-d7a115650405.herokuapp.com/webhook/receiver'  # Update with your actual webhook URL
 
 # Example payload data
 payload_data = {
     'commit_id': '123456789',
-    'author': 'herokuuu',
+    'author': 'New-test',
     'action': 'PUSH',
     'from_branch': 'payload-api-test',
     'to_branch': 'main',

@@ -19,13 +19,13 @@ collection = db["webhook_data"]
 def push_data_to_mongodb(payload):
     try:
         # Extracting required fields from the webhook payload
-        request_id = payload.get('commit_id') if payload.get('commit_id') else payload.get('pr_id')
-        author = payload.get('author')
-        action = payload.get('action')
-        from_branch = payload.get('from_branch')
-        to_branch = payload.get('to_branch')
-        timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')  # Get current timestamp in UTC
-        
+        request_id = payload.get('head_commit').get('id')  # Use commit ID from head_commit
+        author = payload.get('head_commit').get('author').get('name')  # Get author name from head_commit
+        action = "PUSH"  # Assuming this is always a push event based on the provided payload
+        from_branch = payload.get('base_ref')  # Use base_ref as from_branch
+        to_branch = payload.get('ref')  # Use ref as to_branch
+        timestamp = datetime.strptime(payload.get('head_commit').get('timestamp'), '%Y-%m-%dT%H:%M:%S%z').strftime('%Y-%m-%d %H:%M:%S')  # Get timestamp from head_commit and convert to desired format
+
         # Store payload in MongoDB
         data = {
             'request_id': request_id,

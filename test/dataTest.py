@@ -29,7 +29,7 @@ def push_data_to_mongodb(data):
 # Example data 
 data = {
     'request_id': '123456789',
-    'author': 'abhijeet chowdhury',
+    'author': 'subhojeet chowdhury',
     'action': 'PUSH',
     'from_branch': 'my-branch',
     'to_branch': 'main',
